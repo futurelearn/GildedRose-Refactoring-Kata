@@ -41,6 +41,8 @@ legendary item and as such its Quality is 80 and it never alters.
 
 ## How to use this Kata
 
+You can do this exercise in either Ruby or Typescript.
+
 The simplest way is to just clone the code and start hacking away improving the design. You'll want to carefully read the above requirements. I strongly advise you that you'll also need some tests if you want to make sure you don't break the code while you refactor.
 
 ### Discussion prompts
@@ -53,7 +55,7 @@ Whichever testing approach you choose, the idea of the exercise is to do some de
 
 This Kata is forked from [Emily Bache's version](https://github.com/emilybache/GildedRose-Refactoring-Kata) which has many more languages available besides Ruby and Typescript.
 
-## Sharing your code
+### Sharing your code
 
 When you are done with the exercise, commit your code to a new branch and push it up to the repo. We'll compare approaches at the end of the workshop.
 
