@@ -53,6 +53,10 @@ Whichever testing approach you choose, the idea of the exercise is to do some de
 
 This Kata is forked from [Emily Bache's version](https://github.com/emilybache/GildedRose-Refactoring-Kata) which has many more languages available besides Ruby and Typescript.
 
+## Sharing your code
+
+When you are done with the exercise, commit your code to a new branch and push it up to the repo. We'll compare approaches at the end of the workshop.
+
 ## Requirements in other languages
 
 - [Español](GildedRoseRequirements_es.md)
