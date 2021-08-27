@@ -4,7 +4,9 @@ Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime
 prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods.
 Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We
 have a system in place that updates our inventory for us. It was developed by a no-nonsense type named
-Leeroy, who has moved on to new adventures. Your task is to add the new feature to our system so that
+Leeroy, who has moved on to new adventures.
+
+Your task is to add the new feature to our system so that
 we can begin selling a new category of items.
 
 First, an introduction to our system:
@@ -26,7 +28,7 @@ Pretty simple, right? Well this is where it gets interesting:
 
 We have recently signed a supplier of conjured items. This requires an update to our system:
 
-- "Conjured" items degrade in Quality twice as fast as normal items
+- "Conjured" items degrade in `Quality` twice as fast as normal items
 
 Feel free to make any changes to the `UpdateQuality` method and add any new code as long as everything
 still works correctly. **However, do not alter the `Item` class or `Items` property** as those belong to the
@@ -41,11 +43,15 @@ legendary item and as such its Quality is 80 and it never alters.
 
 The simplest way is to just clone the code and start hacking away improving the design. You'll want to carefully read the above requirements. I strongly advise you that you'll also need some tests if you want to make sure you don't break the code while you refactor.
 
-You could write some unit tests yourself, using the requirements to identify suitable test cases. Both the Ruby and Typescript versions come with a failing test to get you started.
+### Discussion prompts
+
+1. Is there anything you don't you like about this code? Why?
+2. What steps could we take to refactor this code so we can improve it? Think about if any of these are general principles that might apply to any refactoring.
+3. What tests could you add to help you confidently change this code? (Both the Ruby and Typescript versions come with a failing test to get you started.)
 
 Whichever testing approach you choose, the idea of the exercise is to do some deliberate practice, and improve your skills at designing test cases and refactoring. The idea is not to re-write the code from scratch, but rather to practice designing tests, taking small steps, running the tests often, and incrementally improving the design.
 
-This Kata is forked from [Emily Bache's version](https://github.com/emilybache/GildedRose-Refactoring-Kata) which has many more languages available. This repo just contains Ruby and Typescript.
+This Kata is forked from [Emily Bache's version](https://github.com/emilybache/GildedRose-Refactoring-Kata) which has many more languages available besides Ruby and Typescript.
 
 ## Requirements in other languages
 
