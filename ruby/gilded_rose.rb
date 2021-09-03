@@ -26,10 +26,6 @@ class DailyUpdateStrategy
       item.increment_quality
       item.increment_quality if item.sell_in <= 0
     end
-
-    def update_sell_in
-      item.decrement_sell_in
-    end
   end
 
   class BackstagePass < DailyUpdateStrategy
@@ -39,21 +35,6 @@ class DailyUpdateStrategy
       item.increment_quality if item.sell_in < 6
       item.quality = 0 if item.sell_in <= 0
     end
-
-    def update_sell_in
-      item.decrement_sell_in
-    end
-  end
-
-  class UnknownItem < DailyUpdateStrategy
-    def update_quality
-      item.decrement_quality
-      item.decrement_quality if item.sell_in <= 0
-    end
-
-    def update_sell_in
-      item.decrement_sell_in
-    end
   end
 
   def self.for(item)
@@ -61,7 +42,7 @@ class DailyUpdateStrategy
     when "Sulfuras, Hand of Ragnaros" then Sulfuras
     when "Aged Brie" then Brie
     when "Backstage passes to a TAFKAL80ETC concert" then BackstagePass
-    else UnknownItem
+    else self
     end.new(item)
   end
 
@@ -75,11 +56,12 @@ class DailyUpdateStrategy
   end
 
   def update_quality
-    fail NotImplementedError
+    item.decrement_quality
+    item.decrement_quality if item.sell_in <= 0
   end
 
   def update_sell_in
-    fail NotImplementedError
+    item.decrement_sell_in
   end
 
   private
