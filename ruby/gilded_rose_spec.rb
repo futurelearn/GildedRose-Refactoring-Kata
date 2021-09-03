@@ -118,8 +118,8 @@ describe GildedRose do
     context "for the hand of ragnaros" do
       let(:name) { "Sulfuras, Hand of Ragnaros" }
 
-      it "does not change the quality" do
-        expect(item.quality).to eq 10
+      it "always has a quality of 80" do
+        expect(item.quality).to eq 80
       end
 
       it "does not change the sell_in date" do

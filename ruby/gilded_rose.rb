@@ -15,6 +15,7 @@ class DailyUpdateStrategy
 
   class Sulfuras < DailyUpdateStrategy
     def update_quality
+      item.quality = 80
     end
 
     def update_sell_in
