@@ -13,19 +13,13 @@ class GildedRose
           end
         end
       else
-        if item.quality < 50
-          item.quality = item.quality + 1
-          if item.name == "Backstage passes to a TAFKAL80ETC concert"
-            if item.sell_in < 11
-              if item.quality < 50
-                item.quality = item.quality + 1
-              end
-            end
-            if item.sell_in < 6
-              if item.quality < 50
-                item.quality = item.quality + 1
-              end
-            end
+        item.increment_quality
+        if item.name == "Backstage passes to a TAFKAL80ETC concert"
+          if item.sell_in < 11
+            item.increment_quality
+          end
+          if item.sell_in < 6
+            item.increment_quality
           end
         end
       end
@@ -44,9 +38,7 @@ class GildedRose
             item.quality = item.quality - item.quality
           end
         else
-          if item.quality < 50
-            item.quality = item.quality + 1
-          end
+          item.increment_quality
         end
       end
     end
@@ -64,5 +56,11 @@ class Item
 
   def to_s()
     "#{@name}, #{@sell_in}, #{@quality}"
+  end
+
+  def increment_quality
+    if quality < 50
+      self.quality += 1
+    end
   end
 end
