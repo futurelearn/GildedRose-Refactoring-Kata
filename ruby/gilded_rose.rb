@@ -15,27 +15,21 @@ class GildedRose
         if item.sell_in < 0
           item.increment_quality
         end
-      else
-        if item.name != "Backstage passes to a TAFKAL80ETC concert"
-          item.decrement_quality
-        else
+      when "Backstage passes to a TAFKAL80ETC concert"
+        item.increment_quality
+        if item.sell_in < 11
           item.increment_quality
-          if item.name == "Backstage passes to a TAFKAL80ETC concert"
-            if item.sell_in < 11
-              item.increment_quality
-            end
-            if item.sell_in < 6
-              item.increment_quality
-            end
-          end
+        end
+        if item.sell_in < 6
+          item.increment_quality
         end
         item.sell_in = item.sell_in - 1
+        item.quality = 0 if item.sell_in < 0
+      else
+        item.decrement_quality
+        item.sell_in = item.sell_in - 1
         if item.sell_in < 0
-          if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            item.decrement_quality
-          else
-            item.quality = 0
-          end
+          item.decrement_quality
         end
       end
     end
