@@ -62,16 +62,12 @@ class DailyUpdateStrategy
   end
 
   def update_sell_in
-    decrement_sell_in
+    item.sell_in -= 1
   end
 
   private
 
   attr_reader :item
-
-  def decrement_sell_in
-    item.sell_in -= 1
-  end
 
   def increment_quality
     if item.quality < 50
