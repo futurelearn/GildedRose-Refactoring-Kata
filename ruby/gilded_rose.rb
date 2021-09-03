@@ -19,7 +19,6 @@ class DailyUpdateStrategy
   def do_daily_update
     case item.name
     when "Sulfuras, Hand of Ragnaros"
-      return
     when "Aged Brie"
       item.increment_quality
       item.increment_quality if item.sell_in <= 0
