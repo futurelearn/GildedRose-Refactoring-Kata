@@ -11,7 +11,7 @@ class GildedRose
         return
       when "Aged Brie"
         item.increment_quality
-        item.sell_in = item.sell_in - 1
+        item.decrement_sell_in
         if item.sell_in < 0
           item.increment_quality
         end
@@ -23,11 +23,11 @@ class GildedRose
         if item.sell_in < 6
           item.increment_quality
         end
-        item.sell_in = item.sell_in - 1
+        item.decrement_sell_in
         item.quality = 0 if item.sell_in < 0
       else
         item.decrement_quality
-        item.sell_in = item.sell_in - 1
+        item.decrement_sell_in
         if item.sell_in < 0
           item.decrement_quality
         end
@@ -47,6 +47,10 @@ class Item
 
   def to_s()
     "#{@name}, #{@sell_in}, #{@quality}"
+  end
+
+  def decrement_sell_in
+    self.sell_in -= 1
   end
 
   def increment_quality
