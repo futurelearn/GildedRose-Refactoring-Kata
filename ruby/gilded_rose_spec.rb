@@ -25,6 +25,14 @@ describe GildedRose do
       it "decrements the quality" do
         expect(item.quality).to eq 9
       end
+
+      context "when the sell-in date has passed" do
+        let(:sell_in) { 0 }
+
+        it "decrements the quality twice" do
+          expect(item.quality).to eq 8
+        end
+      end
     end
   end
 end
