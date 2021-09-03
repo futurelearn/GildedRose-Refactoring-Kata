@@ -70,5 +70,49 @@ describe GildedRose do
         end
       end
     end
+
+    context "for backstage passes" do
+      let(:name) { "Backstage passes to a TAFKAL80ETC concert" }
+
+      context "when sell_in > 10" do
+        let(:sell_in) { 15 }
+
+        it "increments the quality by 1" do
+          expect(item.quality).to eq 11
+        end
+
+        context "when quality is >= 50" do
+          let(:quality) { 50 }
+
+          it "does not increase the quality" do
+            expect(item.quality).to eq 50
+          end
+        end
+      end
+
+      context "when sell_in <= 10" do
+        let(:sell_in) { 10 }
+
+        it "increments the quality by 2" do
+          expect(item.quality).to eq 12
+        end
+      end
+
+      context "when sell_in <= 5" do
+        let(:sell_in) { 5 }
+
+        it "increments the quality by 3" do
+          expect(item.quality).to eq 13
+        end
+      end
+
+      context "when sell_in is past" do
+        let(:sell_in) { 0 }
+
+        it "sets the quality to zero" do
+          expect(item.quality).to eq 0
+        end
+      end
+    end
   end
 end
