@@ -114,5 +114,17 @@ describe GildedRose do
         end
       end
     end
+
+    context "for the hand of ragnaros" do
+      let(:name) { "Sulfuras, Hand of Ragnaros" }
+
+      it "does not change the quality" do
+        expect(item.quality).to eq 10
+      end
+
+      it "does not change the sell_in date" do
+        expect(item.sell_in).to eq 5
+      end
+    end
   end
 end
