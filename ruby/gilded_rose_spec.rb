@@ -53,6 +53,14 @@ describe GildedRose do
       it "decrements the sell-in date" do
         expect(item.sell_in).to eq 4
       end
+
+      context "when the quality is 50 or more" do
+        let(:quality) { 50 }
+
+        it "does not increment the quality" do
+          expect(item.quality).to eq 50
+        end
+      end
     end
   end
 end
