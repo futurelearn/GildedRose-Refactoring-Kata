@@ -14,32 +14,44 @@ end
 class DailyUpdateStrategy
 
   class Sulfuras < DailyUpdateStrategy
-    def do_daily_update
+    def update_quality
+    end
+
+    def update_sell_in
     end
   end
 
   class Brie < DailyUpdateStrategy
-    def do_daily_update
+    def update_quality
       item.increment_quality
       item.increment_quality if item.sell_in <= 0
+    end
+
+    def update_sell_in
       item.decrement_sell_in
     end
   end
 
   class BackstagePass < DailyUpdateStrategy
-    def do_daily_update
+    def update_quality
       item.increment_quality
       item.increment_quality if item.sell_in < 11
       item.increment_quality if item.sell_in < 6
       item.quality = 0 if item.sell_in <= 0
+    end
+
+    def update_sell_in
       item.decrement_sell_in
     end
   end
 
   class UnknownItem < DailyUpdateStrategy
-    def do_daily_update
+    def update_quality
       item.decrement_quality
       item.decrement_quality if item.sell_in <= 0
+    end
+
+    def update_sell_in
       item.decrement_sell_in
     end
   end
@@ -58,6 +70,15 @@ class DailyUpdateStrategy
   end
 
   def do_daily_update
+    update_quality
+    update_sell_in
+  end
+
+  def update_quality
+    fail NotImplementedError
+  end
+
+  def update_sell_in
     fail NotImplementedError
   end
 
