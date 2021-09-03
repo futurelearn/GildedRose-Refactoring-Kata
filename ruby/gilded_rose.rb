@@ -24,16 +24,16 @@ class DailyUpdateStrategy
 
   class Brie < DailyUpdateStrategy
     def update_quality
-      item.increment_quality
-      item.increment_quality if item.sell_in <= 0
+      increment_quality
+      increment_quality if item.sell_in <= 0
     end
   end
 
   class BackstagePass < DailyUpdateStrategy
     def update_quality
-      item.increment_quality
-      item.increment_quality if item.sell_in < 11
-      item.increment_quality if item.sell_in < 6
+      increment_quality
+      increment_quality if item.sell_in < 11
+      increment_quality if item.sell_in < 6
       item.quality = 0 if item.sell_in <= 0
     end
   end
@@ -57,17 +57,33 @@ class DailyUpdateStrategy
   end
 
   def update_quality
-    item.decrement_quality
-    item.decrement_quality if item.sell_in <= 0
+    decrement_quality
+    decrement_quality if item.sell_in <= 0
   end
 
   def update_sell_in
-    item.decrement_sell_in
+    decrement_sell_in
   end
 
   private
 
   attr_reader :item
+
+  def decrement_sell_in
+    item.sell_in -= 1
+  end
+
+  def increment_quality
+    if item.quality < 50
+      item.quality += 1
+    end
+  end
+
+  def decrement_quality
+    if item.quality > 0
+      item.quality -= 1
+    end
+  end
 end
 
 class Item
@@ -81,21 +97,5 @@ class Item
 
   def to_s()
     "#{@name}, #{@sell_in}, #{@quality}"
-  end
-
-  def decrement_sell_in
-    self.sell_in -= 1
-  end
-
-  def increment_quality
-    if quality < 50
-      self.quality += 1
-    end
-  end
-
-  def decrement_quality
-    if quality > 0
-      self.quality -= 1
-    end
   end
 end
