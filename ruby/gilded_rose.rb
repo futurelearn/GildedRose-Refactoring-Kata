@@ -11,25 +11,17 @@ class GildedRose
         return
       when "Aged Brie"
         item.increment_quality
-        if item.sell_in <= 0
-          item.increment_quality
-        end
+        item.increment_quality if item.sell_in <= 0
         item.decrement_sell_in
       when "Backstage passes to a TAFKAL80ETC concert"
         item.increment_quality
-        if item.sell_in < 11
-          item.increment_quality
-        end
-        if item.sell_in < 6
-          item.increment_quality
-        end
+        item.increment_quality if item.sell_in < 11
+        item.increment_quality if item.sell_in < 6
         item.quality = 0 if item.sell_in <= 0
         item.decrement_sell_in
       else
         item.decrement_quality
-        if item.sell_in <= 0
-          item.decrement_quality
-        end
+        item.decrement_quality if item.sell_in <= 0
         item.decrement_sell_in
       end
     end
