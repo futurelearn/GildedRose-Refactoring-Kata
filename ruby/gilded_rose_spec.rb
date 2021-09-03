@@ -61,6 +61,14 @@ describe GildedRose do
           expect(item.quality).to eq 50
         end
       end
+
+      context "when the sell-in date has passed" do
+        let(:sell_in) { 0 }
+
+        it "increases the quality by 2" do
+          expect(item.quality).to eq 12
+        end
+      end
     end
   end
 end
