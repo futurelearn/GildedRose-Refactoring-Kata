@@ -33,6 +33,14 @@ describe GildedRose do
           expect(item.quality).to eq 8
         end
       end
+
+      context "when the quality is zero" do
+        let(:quality) { 0 }
+
+        it "does not decrement the quality" do
+          expect(item.quality).to eq 0
+        end
+      end
     end
   end
 end
