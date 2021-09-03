@@ -42,5 +42,17 @@ describe GildedRose do
         end
       end
     end
+
+    context "for Aged brie" do
+      let(:name) { "Aged Brie" }
+
+      it "increments the quality" do
+        expect(item.quality).to eq 11
+      end
+
+      it "decrements the sell-in date" do
+        expect(item.sell_in).to eq 4
+      end
+    end
   end
 end
