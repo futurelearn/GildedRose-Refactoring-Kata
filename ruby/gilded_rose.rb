@@ -9,8 +9,14 @@ class GildedRose
       case item.name
       when "Sulfuras, Hand of Ragnaros"
         return
+      when "Aged Brie"
+        item.increment_quality
+        item.sell_in = item.sell_in - 1
+        if item.sell_in < 0
+          item.increment_quality
+        end
       else
-        if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
+        if item.name != "Backstage passes to a TAFKAL80ETC concert"
           item.decrement_quality
         else
           item.increment_quality
@@ -25,14 +31,10 @@ class GildedRose
         end
         item.sell_in = item.sell_in - 1
         if item.sell_in < 0
-          if item.name != "Aged Brie"
-            if item.name != "Backstage passes to a TAFKAL80ETC concert"
-              item.decrement_quality
-            else
-              item.quality = 0
-            end
+          if item.name != "Backstage passes to a TAFKAL80ETC concert"
+            item.decrement_quality
           else
-            item.increment_quality
+            item.quality = 0
           end
         end
       end
