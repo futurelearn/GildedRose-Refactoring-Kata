@@ -31,7 +31,7 @@ class GildedRose
               item.decrement_quality
             end
           else
-            item.quality = item.quality - item.quality
+            item.quality = 0
           end
         else
           item.increment_quality
